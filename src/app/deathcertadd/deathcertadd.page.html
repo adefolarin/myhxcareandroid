@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Add Death Certificate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div class="form2">
+    <div id="info">
+        <p style="text-align: center;color: floralwhite;" *ngIf="!deathcertstatus">You are creating a death certificate for 
+          {{name}}</p>
+        
+          <p style="text-align: center;color: floralwhite;" *ngIf="deathcertstatus">Death certificate already created for {{name}}</p>
+       </div>
+      
+      <ion-list lines="none">
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">User ID</ion-label>
+                  <ion-input type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+              </div>
+          </div>
+         </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Partner ID</ion-label>
+                      <ion-input type="text" value="{{partnerid}}" [(ngModel)]="partnerid"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Name</ion-label>
+                      <ion-input type="name" [(ngModel)]="name"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+ 
+       <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label>Date of Death</ion-label>
+                  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="birthdate" type="text" [(ngModel)]="deathdate" required="true"></ion-datetime>
+                  
+              </div>
+          </div>
+         </ion-item>
+      <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Place of Death</ion-label>
+                    <ion-input type="text" [(ngModel)]="deathplace"></ion-input>
+                </div>
+            </div>
+       </ion-item>
+          <ion-button size="small" expand="full" class="btn" (click)="submitDeathCert()">
+            Submit</ion-button>
+      </ion-list>
+  </div>
+  
+</ion-content>
+

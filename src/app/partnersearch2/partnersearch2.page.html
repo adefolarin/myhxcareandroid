@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Service Providers From {{id}} who are Nurses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <ion-searchbar color="transparent" (search)="searchList($event)" placeholder="Search By Country, State or City"></ion-searchbar>
+  <br>
+  <div id="container">
+
+    <ion-grid>
+
+      <ion-row class="ion-align-items-center" id="medkit">
+        <ion-col size="1">
+        </ion-col>
+        <ion-col size="10">
+           <p><ion-icon name="medkit"></ion-icon></p>
+           <p id="name">Request appointment from one of the nurses below:</p>
+        </ion-col>
+        <ion-col size="1">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <br>
+    <ion-grid id="backinfo">
+      <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col>
+        <ion-col size="12">
+          <h4>Nurses</h4>
+        </ion-col> 
+        <ion-col size="3">
+          <h4>Name</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Area of Specialty</h4>
+        </ion-col>
+        <ion-col size="5">
+          <h4>Action</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center" id="info" *ngFor="let data of partnerdata">
+        <ion-col size="3">
+          <p>{{data.name}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <p>{{data.occup}}</p>
+        </ion-col>
+        <ion-col size="5" (click)="bookpartner(data.userid)" style="display:none;">
+          <ion-button size="" expand="block" class="end bookrequest" id="register">
+            <ion-icon name="book" class="book" slot="start"></ion-icon>&nbsp;Request
+          </ion-button>
+        </ion-col>
+        <ion-col size="5" (click)="biodata2(data.userid)">
+          <ion-button size="" expand="block" class="end bookrequest" id="register">
+            <!--<div *ngIf="{{data.online}} == 'true'">
+            <ion-icon name="person" class="book" slot="start" style="color:greenyellow;"></ion-icon>
+            </div>-->
+              <ion-icon name="person" class="book" slot="start"></ion-icon>
+            &nbsp;View Profile
+          </ion-button>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+
+</ion-content>
+

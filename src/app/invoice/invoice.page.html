@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Invoice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+   
+  <ion-grid>
+
+    <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="12">
+        <h4>You are requesting an appointment with {{name}}</h4>
+        </ion-col>
+        <ion-col size="12">
+          <h4>Your Request: {{request}}</h4>
+        </ion-col>
+
+        <ion-col size="12">
+            <div *ngIf="currency == 'NGN'">
+              <h4>The consultation fee is &#x20A6;{{amount}}</h4>
+            </div>
+            <div *ngIf="currency == 'GBP'">
+              <h4>The consultation fee is &#163;{{amount}}</h4>
+            </div>
+            <div *ngIf="currency == 'USD'">
+              <h4>The consultation fee is ${{amount}}</h4>
+            </div>
+            <br><br>
+            <ion-button size="small" expand="full" class="btn" (click)="makePayment()">
+              Proceed To Make Payment</ion-button>
+        </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+

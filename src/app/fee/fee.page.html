@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Consultation Fee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_img">
+
+
+  <div class="form2">
+      <div id="info">
+        <h1 class="ion-text-center" style="font-size:13px;color:floralwhite;">Consultation<span> Fee</span></h1>
+      </div>
+      <ion-list lines="none">
+         <ion-item lines="none">
+            <div class="item_inner d-flex">
+              <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+              <ion-select placeholder="Currency" [(ngModel)]="cur" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedFeeValue(cur)" required>
+                <ion-select-option value="{{data}}" class="patient-option" *ngFor="let data of curs">{{data}}</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-item>
+
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">Consultation Fee</ion-label>
+                    <ion-input mode="md" type="text" [(ngModel)]="fee"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+
+
+      </ion-list>
+        <ion-button size="large" expand="full" class="btn" (click)="setFee()" [disabled]="disabledButton">SET</ion-button>
+
+
+
+
+      <div id="backinfo">
+        <ion-grid>
+           <ion-row class="ion-align-items-center">
+             <ion-col size="12">
+               <h4>Your Consultation Fee</h4>
+             </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center info">
+            <ion-col size="12">
+              <div *ngIf="currency == 'NGN'">
+                <p>&#x20A6;{{amount}}</p>
+              </div>
+              <div *ngIf="currency == 'GBP'">
+                <p>&#163;{{amount}}</p>
+              </div>
+              <div *ngIf="currency == 'USD'">
+                <p>${{amount}}</p>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+            <ion-button size="large" expand="full" class="btn2" (click)="reqFee()" [disabled]="disabledFeeButton">Change Your Consultation Fee</ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </div>
+
+    </div>
+</ion-content>

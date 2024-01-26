@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Add Birth Certificate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div class="form2">
+      <div id="info">
+      <p style="text-align: center;color: floralwhite;" *ngIf="!birthcertstatus">You are creating a birth certificate for 
+        {{name}}</p>
+      
+        <p style="text-align: center;color: floralwhite;" *ngIf="birthcertstatus">Birth certificate already created for {{name}}</p>
+     </div>
+      <ion-list lines="none">
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">User ID</ion-label>
+                  <ion-input type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+              </div>
+          </div>
+         </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Partner ID</ion-label>
+                      <ion-input type="text" value="{{partnerid}}" [(ngModel)]="partnerid"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Name</ion-label>
+                      <ion-input type="name" [(ngModel)]="name"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">Father's Name</ion-label>
+                    <ion-input type="name" [(ngModel)]="fname"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Mother's Name</ion-label>
+                    <ion-input type="name" [(ngModel)]="mname"></ion-input>
+                </div>
+            </div>
+          </ion-item>
+ 
+       <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label>Date of Birth</ion-label>
+                  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="birthdate" type="text" [(ngModel)]="birthdate" required="true"></ion-datetime>
+                  
+              </div>
+          </div>
+         </ion-item>
+         <ion-item lines="none" (ionChange)="getTimeValue(mytime)">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label>Time of Birth</ion-label>
+                    <ion-datetime displayFormat="HH:mm" pickerFormat="hh:mm: A" name="mytime" type="text" [(ngModel)]="mytime" required="true" ></ion-datetime>
+                    
+                </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" style="display:block;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Time Format</ion-label>
+                    <ion-input type="text" [(ngModel)]="timeformat" value="{{timeformat}}"></ion-input>
+                </div>
+            </div>
+           </ion-item>
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Place of Birth</ion-label>
+                    <ion-input type="text" [(ngModel)]="birthplace"></ion-input>
+                </div>
+            </div>
+         </ion-item>
+         <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Name of Hospital</ion-label>
+                    <ion-input type="text" [(ngModel)]="hospname"></ion-input>
+                </div>
+            </div>
+         </ion-item>
+         <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Physician's Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="phyname"></ion-input>
+                </div>
+            </div>
+         </ion-item>
+          <ion-button size="small" expand="full" class="btn" id="mybutton" (click)="submitBirthCert()">
+            SUMBIT</ion-button>
+      </ion-list>
+  </div>
+  
+</ion-content>

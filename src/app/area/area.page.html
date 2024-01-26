@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Choose Area of Specialization</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+   
+  <ion-grid>
+
+    <ion-row class="ion-align-items-center" id="maininfo" *ngFor="let data of areadata">
+        <ion-col size="12" id="info" (click)="physicians(data.areaname)">
+          <h4>{{data.areaname}}</h4>
+        </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

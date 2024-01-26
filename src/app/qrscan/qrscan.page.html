@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">QR Scan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [style.--background]="scanActive ? '#00000000' : '#fff'">
+
+  <div class="scan-box" [hidden]="!scanActive">
+
+  </div>
+
+</ion-content>

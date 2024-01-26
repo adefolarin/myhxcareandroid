@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Charts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div id="container">
+
+    <ion-grid>
+
+      <ion-row class="ion-align-items-center" id="medkit">
+        <ion-col size="12">
+          <ion-segment [(ngModel)]="events_tab" color="primary">
+            <ion-segment-button value="chart1">
+              <ion-label><ion-icon name="home"></ion-icon>Chart 1</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="chart2">
+              <ion-label><ion-icon name="medical"></ion-icon>Chart 2</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="chart3">
+              <ion-label><ion-icon name="medkit"></ion-icon> Chart 3</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-segment [(ngModel)]="events_tab" color="primary">
+            <ion-segment-button value="chart4">
+              <ion-label><ion-icon name="bookmarks"></ion-icon>Chart 4</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="chart5" style="display:none;">
+              <ion-label><ion-icon name="bookmarks"></ion-icon>Chart 5</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="chart6">
+              <ion-label><ion-icon name="analytics"></ion-icon>Chart 6</ion-label>
+            </ion-segment-button>         
+        </ion-segment>
+        </ion-col>
+
+      </ion-row>
+
+
+      <ion-row>
+         <ion-col size="12">
+          <div [ngSwitch]="events_tab">
+
+
+            <!----------  1) Chart 1 ------------------>
+            <div class="form2" *ngSwitchCase="'chart1'">
+              <p style="text-align: center;color: #fff;">Chart 1</p>
+            
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+               </ion-list>
+                <ion-list lines="none">
+                  <ion-item lines="none">
+                    <div class="item_inner d-flex">
+                        <ion-icon class="zmdi ion-text-start"></ion-icon>
+                        <div class="input_field">
+                          <angular-editor [(ngModel)]="htmlContent"></angular-editor>
+                        </div>
+                    </div>
+                  </ion-item>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledButton">
+                  Submit</ion-button>
+              </ion-list>           
+            </div>
+            <!---------- Chart 1 -------------------->
+
+
+
+           </div>
+         </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+    
+  </div>
+
+</ion-content>

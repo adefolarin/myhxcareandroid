@@ -1,0 +1,72 @@
+#medkit {
+    color:#fff;
+    text-align: center;
+    font-size: 40px;
+    background-color: rgba(44,193,239,0.5);
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 0px;
+    margin-top: 20px;
+  
+    #name {
+      font-size: 15px;
+      color:#fff;
+      margin-top: -40px;
+    }
+  
+    ion-button {
+      margin-top: -50px;
+    }
+  }
+  
+  
+  #info {
+      background-color: rgba(44,193,239,0.7);
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 0px;
+   p, h4 {
+      margin-top: 7px;
+      margin-bottom: 7px;
+     color:#fff;
+     text-align: center;
+     font-size: 13px;
+   }
+   h4 {
+     font-size:13px;
+     font-weight: 600;
+  }
+  }
+  
+  .mybutton {
+      --background: #29bf12;
+      color:#fff;
+      height: 40px;
+      font-size: 13px;
+  }
+
+  .mybutton2 {
+    --background: #29bf12;
+    color:#fff;
+    height: 30px;
+    font-size: 12px;
+}
+
+
+  #div_img {
+    p,ion-label,ion-icon {
+       color:#fff;
+       text-align: center;
+    }
+ 
+    ion-avatar {
+       width: 80px;
+       height: 80px;
+       margin: auto; 
+       img {
+           width: 100%;
+         
+       }
+    }
+ 
+ }

@@ -1,0 +1,615 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Add Health Records</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div id="container">
+
+    <ion-grid>
+
+      <ion-row class="ion-align-items-center" id="medkit">
+        <ion-col size="12">
+          <ion-segment [(ngModel)]="events_tab" color="primary">
+            <ion-segment-button value="visits">
+              <ion-label><ion-icon name="home"></ion-icon> Office Visits</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="allergy">
+              <ion-label><ion-icon name="medical"></ion-icon> Allergies</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="vaccine">
+              <ion-label><ion-icon name="medkit"></ion-icon> Vaccination</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-segment [(ngModel)]="events_tab" color="primary">
+            <ion-segment-button value="test">
+              <ion-label><ion-icon name="bookmarks"></ion-icon> Test Results</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="futuretest" style="display:none;;">
+              <ion-label><ion-icon name="bookmarks"></ion-icon> Futrue Test Results</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="stat">
+              <ion-label><ion-icon name="analytics"></ion-icon> Vital Signs</ion-label>
+            </ion-segment-button>         
+        </ion-segment>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-segment [(ngModel)]="events_tab" color="primary">
+            <ion-segment-button value="cond">
+              <ion-label><ion-icon name="document"></ion-icon> Ongoing Health Condition</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="prescript">
+              <ion-label><ion-icon name="bookmark"></ion-icon> Prescription</ion-label>
+            </ion-segment-button> 
+        </ion-segment>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+         <ion-col size="12">
+          <div [ngSwitch]="events_tab">
+
+
+            <!----------  1) Office Visits ------------------>
+            <div class="form2" *ngSwitchCase="'visits'">
+              <p style="text-align: center;color: #fff;">Office Visits</p>
+            
+            <form #parentForm="ngForm" (submit)="submitForm(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon>
+                          <div class="input_field">
+                              <ion-label>Date of Visit</ion-label>
+                              <!--<ion-input name="myname2_{{ form.id }}" type="form.formField2.type" [(ngModel)]="form.formField2.value" required="true"></ion-input>-->
+                              <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="myname2_{{ form.id }}" type="form.formField2.type" [(ngModel)]="form.formField2.value" required="true"></ion-datetime>
+                              
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField2.value" style="color:#787878;"></p>
+                  </div>
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Place of Visit</ion-label>
+                              <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#921919;">All fields are required</p>
+                  </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addForm()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removeForm(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledButton">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+            <!---------- Office Visits End -------------------->
+
+
+            <!----------  2) Allergy Starts ------------------->
+            <div class="form2" *ngSwitchCase="'allergy'">
+              <p style="text-align: center;color: #fff;">Allergies</p>
+            
+            <form #parentForm="ngForm" (submit)="submitAllergy(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainAllergyForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Allergy Name</ion-label>
+                              <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#921919;">All fields are required</p>
+                  </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addAllergy()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removeAllergy(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledAllergyButton">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+            <!---------- Allergy Ends ------------------------>
+
+
+            <!----------  3) Vaccine Starts ------------------>
+            <div class="form2" *ngSwitchCase="'vaccine'">
+              <p style="text-align: center;color: #fff;">Vaccination</p>
+            
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none" *ngFor="let module of modules">
+                  <div class="item_inner d-flex">
+                    <div class="input_field">
+                      <ion-grid>
+                        <ion-row class="ion-align-items-center" id="info">
+                          <ion-col size="12">
+                            <div>
+                            <p>
+                            <ion-checkbox [(ngModel)]="module.checked" (ionChange)="isChecked(item,$event)" style="background-color:#fff;"></ion-checkbox></p>
+                            <p style="margin-top:-35px;text-align: center;">
+                            <label style="color:#fff;font-size:10px;margin-left:25px;"> {{module.vaccinename}}</label>
+                            </p>
+                            </div>
+                          </ion-col>
+                          <ion-col size="10" style="display:none;">
+                            <p style="text-align: right;"><label style="color:#fff;font-size:12px;"> {{module.vaccinename}}</label>
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                      
+                    </div>
+        
+                    <ion-item lines="none" style="display: none;">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon>
+                          <ion-input mode="md" type="text" placeholder="Value" 
+                          value="{{val}}" [(ngModel)]="val"></ion-input>                 
+                      </div>
+                    </ion-item>
+                  </div>
+                </ion-item>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledVaccineButton" (click)="submitVaccine()">
+                  Submit</ion-button>
+              </ion-list>           
+            </div>
+            <!---------- Vaccine Ends ------------------->
+
+
+
+            <!---------- 4) Test Result Starts ---------->
+            <div class="form2" *ngSwitchCase="'test'">
+              <p style="text-align: center;color: #fff;">Test Results</p>
+            
+            <form #parentForm="ngForm" (submit)="submitTestResult(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainTestResultForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon>
+                          <div class="input_field">
+                              <ion-label>Date of Test Result</ion-label>
+                              <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="myname1_{{ form.id }}" type="form.formField1.type" [(ngModel)]="form.formField1.value" required="true"></ion-datetime>
+                              
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField1.value" style="color:#787878;"></p>
+                  </div>
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Test Name</ion-label>
+                              <ion-input name="myname2_{{ form.id }}" type="form.formField2.type" [(ngModel)]="form.formField2.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField2.value" style="color:#921919;">All fields are required</p>
+                  </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                  <ion-item lines="none">
+                    <div class="item_inner d-flex">
+                        <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                        <div class="input_field">
+                              <ion-label>Test Result</ion-label>
+                            <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                        </div>
+                    </div>
+                </ion-item>
+                <div>
+                  <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#921919;">All fields are required</p>
+                </div>
+                <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addTestResult()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removeTestResult(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledTestResultButton">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+            <!---------- Test Result Ends --------------->
+
+
+
+            <!---------- 5) Stat Starts ---------------->
+            <div class="form2" *ngSwitchCase="'stat'">
+              <p style="text-align: center;color: #fff;">Vital Signs</p>
+            
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none" style="display:block;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Blood Group</ion-label>
+                          <ion-input type="text" [(ngModel)]="systolic"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Blood Pressure</ion-label>
+                          <ion-input type="text" [(ngModel)]="diastolic"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Pulse</ion-label>
+                          <ion-input type="text" [(ngModel)]="pulse"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Temperature</ion-label>
+                          <ion-input type="text" [(ngModel)]="temperature"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Respiration</ion-label>
+                          <ion-input type="text" [(ngModel)]="respiration"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Weight</ion-label>
+                          <ion-input type="text" [(ngModel)]="weight"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Height</ion-label>
+                          <ion-input type="text" [(ngModel)]="height"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>Body Mass Index</ion-label>
+                          <ion-input type="text" [(ngModel)]="bodymass"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ion-item lines="none">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>SPO2</ion-label>
+                          <ion-input type="text" [(ngModel)]="spo2"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledStatButton" (click)="submitStat()">
+                  Submit</ion-button>
+              </ion-list>           
+            </div>
+            <!---------- Stat Ends --------------------->
+
+
+            <!---------- 6) Cond  ----------------------->
+            <div class="form2" *ngSwitchCase="'cond'">
+              <p style="text-align: center;color: #fff;">Ongoing Health Condition</p>
+            
+            <form #parentForm="ngForm" (submit)="submitCond(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainCondForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Condition Status</ion-label>
+                              <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#921919;">All fields are required</p>
+                  </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addCond()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removeCond(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledCondButton">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+            <!---------- Cond Ends ---------------------->
+
+
+
+            <!---------- 7) Prescript Starts ------------>
+            <div class="form2" *ngSwitchCase="'prescript'">
+              <p style="text-align: center;color: #fff;">Prescription</p>
+            
+            <form #parentForm="ngForm" (submit)="submitPrescript(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainPrescriptForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Prescription</ion-label>
+                              <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#921919;">All fields are required</p>
+                  </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addPrescript()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removePrescript(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledPrescriptButton">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+            <!---------- Prescript Ends ----------------->
+
+
+
+
+            <!------------- 8) Future Test Starts ------------>
+            <div class="form2" *ngSwitchCase="'futuretest'" style="display:none;">
+              <p style="text-align: center;color: #fff;">Future Test Results</p>
+            
+            <form #parentForm="ngForm" (submit)="submitFutureTest(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainFutureTestForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon>
+                          <div class="input_field">
+                              <ion-label>Date of Test Result</ion-label>
+                              <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="myname1_{{ form.id }}" type="form.formField1.type" [(ngModel)]="form.formField1.value" required="true"></ion-datetime>
+                              
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField1.value" style="color:#787878;"></p>
+                  </div>
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Test Name</ion-label>
+                              <ion-input name="myname2_{{ form.id }}" type="form.formField2.type" [(ngModel)]="form.formField2.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField2.value" style="color:#921919;">All fields are required</p>
+                  </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                  <ion-item lines="none">
+                    <div class="item_inner d-flex">
+                        <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                        <div class="input_field">
+                              <ion-label>Test Result</ion-label>
+                            <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                        </div>
+                    </div>
+                </ion-item>
+                <div>
+                  <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#921919;">All fields are required</p>
+                </div>
+                <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addFutureTest()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removeFutureTest(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit" [disabled]="disabledFutureTestButton">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+            <!-------------- Future Ends ----------------->
+
+
+
+           </div>
+         </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+    
+  </div>
+
+</ion-content>

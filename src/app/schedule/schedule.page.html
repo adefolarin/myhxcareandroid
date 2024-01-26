@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Schedule Time</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_img">
+
+
+  <div class="form2">
+      <div id="info">
+        <h1 class="ion-text-center" style="font-size:13px;color:floralwhite;">Schedule<span> Time</span></h1>
+      </div>
+      <ion-list lines="none">
+         <ion-item lines="none">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <ion-select placeholder="Week Day" [(ngModel)]="weekday" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedWeekDayValue(weekday)" required>
+              <ion-select-option value="{{data}}" class="patient-option" *ngFor="let data of weekdays">{{data}}</ion-select-option>
+          </ion-select>
+          </div>
+          </ion-item>
+
+          <ion-item lines="none" (ionChange)="getTimeValue(mytime)">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label>Start Time</ion-label>
+                    <ion-datetime displayFormat="HH:mm" pickerFormat="hh:mm: A" name="mytime" type="text" [(ngModel)]="mytime" required="true" ></ion-datetime>
+                    
+                </div>
+            </div>
+           </ion-item>
+           <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Time Format</ion-label>
+                    <ion-input type="text" [(ngModel)]="timeformat" value="{{timeformat}}"></ion-input>
+                </div>
+            </div>
+           </ion-item>
+
+
+           <ion-item lines="none" (ionChange)="getTimeValue2(mytime2)">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label>End Time</ion-label>
+                    <ion-datetime displayFormat="HH:mm" pickerFormat="hh:mm: A" name="mytime2" type="text" [(ngModel)]="mytime2" required="true" ></ion-datetime>
+                    
+                </div>
+            </div>
+           </ion-item>
+           <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Time Forma 2</ion-label>
+                    <ion-input type="text" [(ngModel)]="timeformat2" value="{{timeformat2}}"></ion-input>
+                </div>
+            </div>
+           </ion-item>
+
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+              <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+              <ion-select placeholder="Duration" [(ngModel)]="timedur" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedDurationValue(timedur)" required>
+                <ion-select-option value="{{data}}" class="patient-option" *ngFor="let data of durtime">{{data}}</ion-select-option>
+            </ion-select>
+            </div>
+            </ion-item>
+      </ion-list>
+      <ion-button size="large" expand="full" class="btn" (click)="scheduleTime()" [disabled]="disabledButton">SET</ion-button>
+
+
+
+      <div id="backinfo">
+        <ion-grid>
+           <ion-row class="ion-align-items-center">
+             <ion-col size="12">
+               <h4>Your Time Schedule</h4>
+             </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center info" *ngFor="let data of timescheduledata">
+            <ion-col size="6">
+              <h4>WEEK DAY</h4>
+              <p>{{data.weekday}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <h4>START TIME</h4>
+              <p>{{data.starttime}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <h4>END TIME </h4>
+              <p>{{data.endtime}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <h4>DURATION</h4>
+              <p>{{data.timeslot}}</p>
+            </ion-col>
+            <ion-col size="12">
+                <div>
+                  <ion-button size="" expand="block" class="end bookrequest" id="register" 
+                  (click)="delScheduleTime(data.timescheduleid)">
+                    DELETE
+                  </ion-button>
+                </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </div>
+
+    </div>
+</ion-content>

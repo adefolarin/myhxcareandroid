@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Bill Pay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div id="container">
+
+    <ion-grid>
+
+      <ion-row>
+         <ion-col size="12">
+          <div>
+            <div class="form2">
+              <p style="text-align: center;color: #fff;font-size: 13px;">Enter The Bills You Have Paid</p>
+            
+            <form #parentForm="ngForm" (submit)="submitForm(parentForm)">
+              <ion-list lines="none">
+                <ion-item lines="none" style="display:none;">
+                  <div class="item_inner d-flex">
+                      <ion-icon class="zmdi ion-text-start"></ion-icon>
+                      <div class="input_field">
+                          <ion-label>User ID</ion-label>
+                          <ion-input name="myname1" type="text" 
+                          value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                      </div>
+                  </div>
+                </ion-item>
+                <ng-template ngFor let-form [ngForOf]="mainForm.formFields" let-index="index" let-isLast="last"> 
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon>
+                          <div class="input_field">
+                              <ion-label>Date of Payment</ion-label>
+                              <!--<ion-input name="myname2_{{ form.id }}" type="form.formField2.type" [(ngModel)]="form.formField2.value" required="true"></ion-input>-->
+                              <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="myname2_{{ form.id }}" type="form.formField2.type" [(ngModel)]="form.formField2.value" required="true"></ion-datetime>
+                              
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField2.value" style="color:#787878;"></p>
+                  </div>
+                  <ion-item lines="none">
+                      <div class="item_inner d-flex">
+                          <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                          <div class="input_field">
+                                <ion-label>Service You Paid For</ion-label>
+                              <ion-input name="myname3_{{ form.id }}" type="form.formField3.type" [(ngModel)]="form.formField3.value" required="true"></ion-input>
+                          </div>
+                      </div>
+                  </ion-item>
+                  <div>
+                    <p *ngIf="parentForm.submitted && !form.formField3.value" style="color:#fff;">All fields are required</p>
+                  </div>
+                  <ion-item lines="none">
+                    <div class="item_inner d-flex">
+                        <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                        <div class="input_field">
+                              <ion-label>Amount Paid</ion-label>
+                            <ion-input name="myname4_{{ form.id }}" type="form.formField4.type" [(ngModel)]="form.formField4.value" required="true"></ion-input>
+                        </div>
+                    </div>
+                </ion-item>
+                <div>
+                  <p *ngIf="parentForm.submitted && !form.formField4.value" style="color:#fff;">All fields are required</p>
+                </div>
+                  <hr style="border-bottom: 1px solid rgba(44,193,239,0.35);">
+                </ng-template>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6">
+                         <ion-button size="" expand="block" class="mybutton" (click)="addForm()" [disabled]="(!parentForm.form.valid)">
+                        <ion-icon name="add"></ion-icon>Add</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button size="" expand="block" class="mybutton" (click)="removeForm(index)">
+                        <ion-icon name="remove"></ion-icon>Remove</ion-button>
+                    </ion-col>
+                  </ion-row>
+               </ion-grid>
+                <br>
+              <ion-button size="" expand="block" class="mybutton2" type="submit">
+                  Submit</ion-button>
+              </ion-list>
+            </form>            
+            </div>
+
+
+           </div>
+         </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+    
+  </div>
+
+</ion-content>
+

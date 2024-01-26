@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">E Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+    <div id="container">
+
+      <ion-grid>
+
+        <ion-row class="ion-align-items-center">
+          <ion-col size="1">
+          </ion-col>
+          <ion-col size="10">
+           <ion-card id="cardinfo">
+             <div class="logo ion-text-center">
+              
+              <h1 class="ion-text-center" style="font-size:15px;">MyHxCare</h1>
+             </div>
+              <div id="div_img">
+                 <ion-avatar><img src="{{photo}}"></ion-avatar>
+                 <br>
+                <p><span style="font-weight: 700;">Name:</span> {{name}}</p>
+                <hr>
+                <p><span style="font-weight: 700;">Gender:</span> {{gender}}</p>
+                <hr>
+                <p><span style="font-weight: 700;">Age:</span> {{age}}</p>
+                <hr>
+                <p><span style="font-weight: 700;">Phone Number:</span> {{pnum}}</p>
+                <hr>
+                <p><span style="font-weight: 700;">Country:</span> {{country}}</p>
+              </div>
+           </ion-card>
+          </ion-col>
+          <ion-col size="1">
+          </ion-col>
+        </ion-row>
+
+
+      </ion-grid>
+
+    </div>
+     
+
+</ion-content>
+

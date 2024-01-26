@@ -1,0 +1,132 @@
+
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div class="logo ion-text-center">
+    <img src="assets/imgs/logo.png">
+    <!--<h1 class="ion-text-center" style="font-size:18px;">Ade<span>Ajala Ministries</span></h1>-->
+</div>
+<h2 class="ion-text-center ion-text-uppercase"><strong>SIGN UP AS ORGANIZATION</strong></h2>
+
+<div class="form">
+    <ion-list lines="none">
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <ion-input mode="md" type="text" placeholder="Full Name Of Contact Person" [(ngModel)]="name"></ion-input>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <ion-input mode="md" type="text" placeholder="Company Name" [(ngModel)]="compname"></ion-input>
+          </div>
+        </ion-item>
+
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <ion-input mode="md" type="text"  [(ngModel)]="phonenum"></ion-input>
+          </div>
+        </ion-item>
+        <ion-item>
+          <p style="display: block;">
+            <label style="color:#b8b8b8;font-size:12px;display: block;">Select Your Dialling Code and Input Your Phone Number</label>
+          </p>
+        </ion-item>
+        <form #parentForm="ngForm" (input)="getCode(parentForm)">
+          <ion-intl-tel-input [(ngModel)]="pnum" id="phone-number" name="pnum" #phoneNumberControl="ngModel" ionIntlTelInputValid></ion-intl-tel-input>
+          <div *ngIf="phoneNumberControl.invalid && phoneNumberControl.touched">
+            <ion-text color="danger" *ngIf="phoneNumberControl.errors.required">
+              <p class="ion-no-margin"><sub>Phone is required.</sub></p>
+            </ion-text>
+            <ion-text color="danger" *ngIf="phoneNumberControl.errors.phone">
+              <p class="ion-no-margin"><sub>Phone is not valid.</sub></p>
+            </ion-text>
+            <br>
+          </div>
+        </form>
+  
+        <ion-item lines="none" style="display: block;">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <ion-input mode="md" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+          </div>
+        </ion-item>  
+        <ion-item>
+          <ion-button size="" expand="expand" class="mybtn" 
+          style="background-color: #ffffff;" type="submit" (click)="getVerificationCode()">GET VERIFICATION CODE</ion-button>          
+       </ion-item>      
+      
+
+        <ion-item style="display:none;">
+          <p style="display: block;font-size:.7em;color:#fff;">
+            <span style="font-weight: 700;">Phone Numer Format:</span> 2348012345678
+          </p>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi zmdi-lock ion-text-start"></ion-icon>
+              <ion-input mode="md" type="text" placeholder="Verification Code" [(ngModel)]="code"></ion-input>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <ion-input mode="md" type="text" placeholder="License No" [(ngModel)]="licenseno"></ion-input>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi zmdi-lock ion-text-start"></ion-icon>
+                <ion-input mode="md" type="password" placeholder="Password" [(ngModel)]="pass"></ion-input>
+            </div>
+        </ion-item>
+        <ion-item>
+          <p style="display: block;font-size:.7em;color:#fff">
+            Passwords should be at least 8 characters in length and should inlude at least one upper case letter, one number, and one special character.
+          </p>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi zmdi-lock ion-text-start"></ion-icon>
+              <ion-input mode="md" type="password" placeholder="Confirm Password" [(ngModel)]="cpass"></ion-input>
+          </div>
+      </ion-item>
+
+      <ion-item>
+      
+        <span>Check the box to agree to <br>our privacy policy</span>
+     
+      <ion-checkbox class="checkbox-md checkbox-icon" slot="start" (ionChange)="isChecked(item,$event)"></ion-checkbox>
+    </ion-item>
+
+    <ion-item (click)="privacyPolicy()">
+        <ion-button size="" expand="expand" class="mybtn" 
+        style="background-color: #ffffff;" type="submit">Privacy Policy</ion-button>
+    </ion-item>
+
+    <ion-item lines="none" style="display: none;">
+      <div class="item_inner d-flex">
+          <ion-icon class="zmdi ion-text-start"></ion-icon>
+          <ion-input mode="md" type="text" placeholder="Value" 
+           [(ngModel)]="val"></ion-input>
+        
+      </div>
+    </ion-item>
+    
+    </ion-list>
+    <ion-button size="" expand="block" class="" (click)="signup()" style="background-color: #ffffff;">SIGN UP</ion-button>
+
+    <div class="forgot-register">
+        <p class="d-flex">
+            <span>Already Signed Up?</span>
+            <ion-button size="" expand="block" class="register end" id="register" (click)="openSignInPage()">Sign In Now</ion-button>
+        </p>
+    </div>
+
+
+</div>
+</ion-content>
+
+
+

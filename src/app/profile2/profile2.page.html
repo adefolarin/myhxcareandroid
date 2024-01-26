@@ -1,0 +1,316 @@
+<ion-header>
+  <ion-toolbar> 
+      <ion-buttons slot="start">
+          <!--<ion-menu-button></ion-menu-button>-->
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+          <div class="title_inner d-flex"> Basic Profile Info</div>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div [ngSwitch]="events_tab">
+  <div class="form2" *ngSwitchCase="'profile'">
+      <div id="info">
+      <p style="text-align: center;color: floralwhite;font-size:13px;">Biodata</p>
+      </div>
+      
+      <ion-list lines="none" *ngIf="patient">
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">User ID</ion-label>
+                      <ion-input mode="md" type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Name</ion-label>
+                      <ion-input mode="md" type="name" value="{{name}}" [(ngModel)]="name"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                  <div class="input_field">
+                        <ion-label position="stacked">Country</ion-label>
+                      <ion-input mode="md" type="text"  value="{{country}}" [(ngModel)]="country"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <div class="input_field">
+                      <ion-label position="stacked">Address</ion-label>
+                      <ion-input mode="md" type="text" value="{{address}}" [(ngModel)]="address"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <div class="input_field">
+                      <ion-label position="stacked">State</ion-label>
+                      <ion-input mode="md" type="text" value="{{state}}" [(ngModel)]="state"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <div class="input_field">
+                      <ion-label position="stacked">City</ion-label>
+                      <ion-input mode="md" type="text" value="{{city}}" [(ngModel)]="city"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Date Of Birth</ion-label>
+                    <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="mydate" type="text" [(ngModel)]="dob" required="true">{{dob}}</ion-datetime>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <ion-select placeholder="Gender" [(ngModel)]="gender" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedGenderValue(gender)" required>
+                        <ion-select-option value="{{gender}}" class="patient-option">{{gender}}</ion-select-option>
+                        <ion-select-option value="Male" class="patient-option">Male</ion-select-option>
+                        <ion-select-option value="Female">Female</ion-select-option>
+                    </ion-select>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display: none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">LGA</ion-label>
+                    <ion-input mode="md" type="text" value="{{lga}}" [(ngModel)]="lga"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display: none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Language</ion-label>
+                    <ion-input mode="md" type="text" value="{{lang}}" [(ngModel)]="lang"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display: none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Occupation</ion-label>
+                    <ion-input mode="md" type="text" value="{{occupation}}" [(ngModel)]="occupation"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display: none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Level of Education</ion-label>
+                    <ion-input mode="md" type="text" value="{{edulevel}}" [(ngModel)]="edulevel"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display: none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <ion-select placeholder="Marital Status" [(ngModel)]="maritalstatus" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedMaritalStatusValue(maritalstatus)" required>
+                        <ion-select-option value="{{maritalstatus}}" class="patient-option">{{maritalstatus}}</ion-select-option>
+                        <ion-select-option value="Single" class="patient-option">Single</ion-select-option>
+                        <ion-select-option value="Married">Married</ion-select-option>
+                    </ion-select>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display: none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Next Of Kin</ion-label>
+                    <ion-input mode="md" type="text" value="{{nextofkin}}" [(ngModel)]="nextofkin"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+          <ion-button size="small" expand="full" class="btn" (click)="changeProfile()">
+            Update</ion-button>
+      </ion-list>
+      
+
+
+
+      <ion-list lines="none" *ngIf="physician">
+        <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">User ID</ion-label>
+                    <ion-input mode="md" type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">Name</ion-label>
+                    <ion-input mode="md" type="name" value="{{name}}" [(ngModel)]="name"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">Company Name</ion-label>
+                  <ion-input mode="md" type="text" value="{{compname}}" [(ngModel)]="compname"></ion-input>
+              </div>
+          </div>
+       </ion-item>
+       <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">License No</ion-label>
+                  <ion-input mode="md" type="text" value="{{licenseno}}" [(ngModel)]="licenseno"></ion-input>
+              </div>
+          </div>
+       </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                <div class="input_field">
+                      <ion-label position="stacked">Country</ion-label>
+                    <ion-input mode="md" type="text"  value="{{country}}" [(ngModel)]="country"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Address</ion-label>
+                    <ion-input mode="md" type="text" value="{{address}}" [(ngModel)]="address"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">State</ion-label>
+                    <ion-input mode="md" type="text" value="{{state}}" [(ngModel)]="state"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">City</ion-label>
+                    <ion-input mode="md" type="text" value="{{city}}" [(ngModel)]="city"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Date Of Birth</ion-label>
+                    <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="mydate" type="text" [(ngModel)]="dob" required="true">{{dob}}</ion-datetime>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <ion-select placeholder="Gender" [(ngModel)]="gender" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedGenderValue(gender)" required>
+                        <ion-select-option value="{{gender}}" class="patient-option">{{gender}}</ion-select-option>
+                        <ion-select-option value="Male" class="patient-option">Male</ion-select-option>
+                        <ion-select-option value="Female">Female</ion-select-option>
+                    </ion-select>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">LGA</ion-label>
+                    <ion-input mode="md" type="text" value="{{lga}}" [(ngModel)]="lga"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Language</ion-label>
+                    <ion-input mode="md" type="text" value="{{lang}}" [(ngModel)]="lang"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Occupation</ion-label>
+                    <ion-input mode="md" type="text" value="{{occupation}}" [(ngModel)]="occupation"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Level of Education</ion-label>
+                    <ion-input mode="md" type="text" value="{{edulevel}}" [(ngModel)]="edulevel"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <ion-select placeholder="Marital Status" [(ngModel)]="maritalstatus" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedMaritalStatusValue(maritalstatus)" required>
+                        <ion-select-option value="{{maritalstatus}}" class="patient-option">{{maritalstatus}}</ion-select-option>
+                        <ion-select-option value="Single" class="patient-option">Single</ion-select-option>
+                        <ion-select-option value="Married">Married</ion-select-option>
+                    </ion-select>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Next Of Kin</ion-label>
+                    <ion-input mode="md" type="text" value="{{nextofkin}}" [(ngModel)]="nextofkin"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-button size="small" expand="full" class="btn" (click)="changeProfile2()">
+          Update</ion-button>
+    </ion-list>
+    </div>
+
+
+
+    
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  
+</ion-footer>

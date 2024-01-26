@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Availability</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+   
+  <ion-grid>
+
+    <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="6">
+          <h4>Availability</h4>
+          <span>If turned on, patients will be able to see that you are available for consultation</span>
+        </ion-col>
+        <ion-col size="6">
+          <div *ngIf="onlinestatus == true">
+           <h4 style="text-align: right;">
+             <ion-toggle [enableOnOffLabels]="true" color="success" (ionChange)="onlineToggle($event)" checked></ion-toggle>
+           </h4>
+           </div>
+           <div *ngIf="onlinestatus == false">
+            <h4 style="text-align: right;">
+              <ion-toggle [enableOnOffLabels]="true" (ionChange)="onlineToggle($event)"></ion-toggle>
+            </h4>
+            </div>
+
+        </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

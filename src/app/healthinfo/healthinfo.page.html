@@ -1,0 +1,411 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Health Records Search Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div id="container">
+
+    <ion-grid class="info">
+
+      <ion-row class="ion-align-items-center" id="medkit">
+        
+
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="4">
+           <p><ion-icon name="medkit"></ion-icon></p>
+           <p id="name">{{name}}</p>
+        </ion-col>
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="12" class="menuitem">
+          <ion-row>
+            <ion-col size="6" expand="" (click)="addHealth()" *ngIf="patient">
+             <div class="menu-item">
+              <p>Create Health Records</p>
+              </div>
+            </ion-col>
+            <ion-col size="6" expand="" (click)="importHRecord()" *ngIf="patient">
+             <div class="menu-item">
+             <p>Import Existing Health Record</p>
+             </div>
+            </ion-col>
+            <ion-col size="6" expand="" (click)="viewImportedHRecord()" *ngIf="patient">
+             <div class="menu-item">
+             <p>View Existing Health Record</p>
+             </div>
+            </ion-col>
+            <ion-col size="6" expand="" (click)="getPDF()" *ngIf="patient">
+             <div class="menu-item">
+             <p>Download and View in PDF</p>
+             </div>
+            </ion-col>
+            <ion-col size="6" expand="" (click)="addHealth()" *ngIf="physician">
+             <div class="menu-item">
+             <p>Update Health Records</p>
+             </div>
+            </ion-col>
+            <ion-col size="6" expand="" expand="" class="mybutton" (click)="importHRecord()" *ngIf="physician">
+             <div class="menu-item">
+             <p>Import Existing Health Record</p>
+             </div>
+            </ion-col>
+            <ion-col size="6" expand="" (click)="addBirthCert()" *ngIf="physician">
+             <div class="menu-item">
+             <p>Create Birth Certificate</p>
+             </div>
+            </ion-col>
+           
+            <ion-col size="6" expand="" (click)="bookPatient()" *ngIf="physician">
+             <div class="menu-item">
+             <p>Schedule An Appointment</p>
+             </div>
+            </ion-col>
+            <ion-col size="6" expand="" (click)="viewChart()" *ngIf="physician">
+             <div class="menu-item">
+             <p>E-Chart</p>
+             </div>
+            </ion-col>
+          </ion-row>
+         </ion-col>
+
+
+        <ion-col size="12">
+           <p style="text-align: center;font-size:13px;color:#fff;">Health Records Between {{mydate}} and {{mydate2}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <div class="form2">
+           <ion-item lines="none">
+             <div class="item_inner d-flex">
+                 <ion-icon class="zmdi ion-text-start"></ion-icon>
+                 <div class="input_field">
+                     <ion-label>From</ion-label>
+                     <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="mydate" type="text" [(ngModel)]="mydate" required="true"></ion-datetime>
+                     
+                 </div>
+             </div>
+            </ion-item>
+           </div>
+         </ion-col>
+         <ion-col size="6">
+           <div class="form2">
+             <ion-item lines="none">
+               <div class="item_inner d-flex">
+                   <ion-icon class="zmdi ion-text-start"></ion-icon>
+                   <div class="input_field">
+                       <ion-label>To</ion-label>
+                       <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMM-YY" name="mydate2" type="text" [(ngModel)]="mydate2" required="true"></ion-datetime>
+                       
+                   </div>
+               </div>
+              </ion-item>
+             </div>
+           
+         </ion-col>
+         <ion-col size="12">
+           <br>
+           <ion-button size="small" expand="full" class="btn" (click)="searchHealthRecords()">
+             Search</ion-button>
+         </ion-col>
+          
+          <!--<ion-col size="12" *ngIf="physician">
+            <ion-button size="small" expand="" class="mybutton" (click)="addDeathCert()">
+              Create Death Certificate
+             </ion-button>
+          </ion-col>-->
+      </ion-row>
+    </ion-grid>
+
+    <!--------------  1) Visit Starts   ------------------->
+
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Office Visits</h4>
+        </ion-col>
+        <ion-col size="6">
+          <h4>Date of Visit</h4>
+        </ion-col>
+        <ion-col size="6">
+          <h4>Place of Visit</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of visitdata">
+        <ion-col size="6">
+          <p>{{data.visitdate}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.visitplace}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Visit Ends   ------------------->
+
+
+    <!--------------  2) Allergy Starts   ------------------->
+
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Allergies</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of allergydata">
+        <ion-col size="12">
+          <p>{{data.allergyname}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Allergy Ends   ------------------->
+
+
+
+    <!--------------  3) Vaccine Starts   ------------------->
+
+
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{vaccinecaption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Vaccines</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of vaccinedata">
+        <ion-col size="12">
+          <p>{{data.vaccinename}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Vaccine Ends   --------------------->
+
+
+
+    <!--------------  4) Test Result Starts   ------------------->
+
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Test Results</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Date</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Test Name</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Test Result</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of testresultdata">
+        <ion-col size="4">
+          <p>{{data.trdate}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <p>{{data.testname}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <p>{{data.tresult}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Test Result Ends   --------------------->
+
+
+
+    <!--------------  5) Stat Starts   ---------------------->
+
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Health Statistics</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of statdata">
+        <ion-col size="6">
+          <p style="font-weight: 900;">Blood Group</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.systolic}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Blood Pressure</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.diastolic}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Pulse</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.pulse}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Temperature</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.temperature}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Respiration</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.respiration}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Weight</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.weight}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Height</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.height}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">Body Mass Index</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.bodymass}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="font-weight: 900;">SPO2</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.spo2}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Stat Ends   --------------------------->
+
+
+
+    <!--------------  6) Cond Starts   ------------------->
+
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Ongoing Health Condition</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of conddata">
+        <ion-col size="12">
+          <p>{{data.condname}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Cond Ends   --------------------->
+
+
+
+    <!--------------  7) Prescript Starts   ------------------->
+    <ion-grid id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Prescription</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of prescriptdata">
+        <ion-col size="12">
+          <p>{{data.prescriptname}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+    <!--------------  Prescript Ends   --------------------->
+
+
+
+    <!--------------  8) Future Test Starts   ------------------->
+
+    <ion-grid style="display:none;" id="info">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col> 
+        <ion-col size="12">
+          <h4>Future Test Results</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Date</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Test Name</h4>
+        </ion-col>
+        <ion-col size="4">
+          <h4>Test Result</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center" id="info" *ngFor="let data of futuretestdata">
+        <ion-col size="4">
+          <p>{{data.trdate}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <p>{{data.testname}}</p>
+        </ion-col>
+        <ion-col size="4">
+          <p>{{data.tresult}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+    <!--------------  Future Test Ends   --------------------->
+
+
+
+
+  </div>
+
+
+
+</ion-content>

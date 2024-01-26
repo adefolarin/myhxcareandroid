@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Appointment Request Records</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div id="container">
+   <ion-grid id="backinfo">
+      <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Date of Request</h4>
+        </ion-col> 
+        <ion-col size="6">
+          <h4>Request</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Status</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center info" id="info" *ngFor="let data of requestdata">
+        <ion-col size="3">
+          <p>{{data.reqdate}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{data.request}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <div id="info" *ngIf="data.reqstatus == 'false' || data.reqstatus == ''">
+          <!--<ion-button size="" expand="block" class="end bookrequest2" id="register">
+             Pending
+          </ion-button>-->
+          <p>Pending</p>
+          </div>
+          <div id="info" *ngIf="data.reqstatus == 'true'">
+            <!--<ion-button size="" expand="block" class="end bookrequest" id="register">
+               Granted
+            </ion-button>-->
+            <p>Granted</p>
+            </div>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+
+</ion-content>

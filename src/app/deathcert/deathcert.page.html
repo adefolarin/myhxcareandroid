@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Death Certificate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+    <div id="container">
+
+      <ion-grid>
+
+        <ion-row class="ion-align-items-center">
+          <ion-col size="12">
+           <ion-card id="cardinfo">
+             <div class="logo ion-text-center">
+              
+              <h1 class="ion-text-center" style="font-size:15px;">DEATH CERTIFICATE</h1>
+             </div>
+              <div id="div_img">
+                <p>This is to acknowledge the death of</p>
+                <hr>
+                <p><span style="font-weight: 700;">{{name}}</span></p>
+                <hr>
+                <p>On <span style="font-weight: 700;">{{deathdate}}</span></p>
+                <hr>
+                <p>At<span style="font-weight: 700;"> {{deathplace}}</span></p>
+              </div>
+           </ion-card>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-grid>
+
+    </div>
+     
+
+</ion-content>
+

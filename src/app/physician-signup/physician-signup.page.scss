@@ -1,0 +1,159 @@
+ion-header ion-toolbar::before {
+    display: none;
+}
+
+.logo {
+    height: 183px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 150px;
+        display: block;
+        margin: auto;
+    }
+
+    h1 {
+        margin: auto;
+        width: 100%;
+        color: var(--white);
+        font-weight: 400;
+        font-size: 2.2rem;
+
+        span {
+            font-weight: 600;
+        }
+    }
+}
+
+h2 {
+    font-size: 0.93rem;
+    letter-spacing: .5px;
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.form ion-list {
+    margin-bottom: 7px;
+
+}
+
+ion-input {
+    --box-shadow:none;
+}
+
+ion-button {
+    --background: #2cc1ef;
+    height: 40px;
+    --border-radius:0;
+}
+
+
+.forgot-register {
+    margin: 27px 0 27px 0px;
+
+    p {
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-size: .90rem;
+        color: #fff;
+    }
+
+    .register {
+       --background: transparent;
+       color:#fff;
+       height: 40px;
+       border: 1px solid #2cc1ef;
+    }
+}
+
+
+.forgot {
+    --background: #2cc1ef;
+    color:#fff;
+    height: 40px;
+ }
+
+
+.button.btn {
+    text-transform: uppercase !important;
+    font-size: .98rem;
+    letter-spacing: 1px !important;
+}
+
+.socsocial_media {
+    padding-top: 8px;
+
+    p {
+        font-weight: 400;
+        font-size: 0.7rem;
+        color: var(--white);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0;
+        padding-bottom: 21px;
+    }
+
+    .icon_box {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        width: fit-content;
+
+        .icon {
+            padding: 0 8px;
+
+            img {
+                width: 43px;
+            }
+        }
+    }
+
+
+}
+
+.mybtn {
+    /*--background: #2cc1ef;*/
+    --background: rgba(41, 191, 18, 0.7);
+    color:#fff;
+    height: 35px;
+    font-size: 12px;
+    width:100%;
+ }
+
+
+ ion-checkbox {
+    --background:#fff;
+    --border-radius: 0% !important;
+}
+
+ion-label {
+   font-size:0.5em;
+   text-transform: capitalize;
+}
+
+.checkbox-icon {
+   border-radius: 0% !important;
+}
+
+ion-item {
+    span {
+      font-size: 13px;
+      color:#fff;
+    }
+
+ }
+ .md ion-item {
+     
+    span {
+        font-size: 13px;
+        color:#fff;
+        margin-top: 0.7em;
+      }
+ }

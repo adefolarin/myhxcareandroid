@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Request For A Change Of Consultation Fee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_img">
+
+
+  <div class="form2">
+      <div id="info">
+        <h1 class="ion-text-center" style="font-size:13px;color:floralwhite;">Change of Consultation<span> Fee</span></h1>
+      </div>
+      <ion-list lines="none">
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">Email</ion-label>
+                  <ion-input mode="md" type="text" [(ngModel)]="email"></ion-input>
+              </div>
+          </div>
+        </ion-item>
+         <ion-item lines="none">
+            <div class="item_inner d-flex">
+              <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+              <ion-select placeholder="Currency" [(ngModel)]="cur" mode="md" class="custom-options" interface="popover" (ionChange)="getSelectedFeeValue(cur)" required>
+                <ion-select-option value="{{data}}" class="patient-option" *ngFor="let data of curs">{{data}}</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-item>
+
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">New Consultation Fee</ion-label>
+                    <ion-input mode="md" type="text" [(ngModel)]="fee"></ion-input>
+                </div>
+            </div>
+          </ion-item>
+
+
+      </ion-list>
+        <ion-button size="large" expand="full" id="btn" (click)="changeFee()">SEND REQUEST</ion-button>
+
+
+
+
+      <div id="backinfo">
+        <ion-grid>
+           <ion-row class="ion-align-items-center">
+             <ion-col size="12">
+               <h4>Your Consultation Fee Request History</h4>
+             </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center info" id="info">
+          <ion-col size="4">
+              <p>Date</p>
+          </ion-col>
+            <ion-col size="4">
+                <p>Amount</p>
+            </ion-col>
+            <ion-col size="4">
+               <p>Status</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center info" *ngFor="let data of feedata">
+            <ion-col size="4">
+              <p>{{data.reqdate}}</p>
+           </ion-col>
+            <ion-col size="4">
+              <div *ngIf="data.currency == 'NGN'">
+                <p>&#x20A6;{{data.amount}}</p>
+              </div>
+              <div *ngIf="data.currency == 'GBP'">
+                <p>&#163;{{data.amount}}</p>
+              </div>
+              <div *ngIf="data.currency == 'USD'">
+                <p>${{data.amount}}</p>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <p>{{data.status}}</p>
+           </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </div>
+
+    </div>
+</ion-content>

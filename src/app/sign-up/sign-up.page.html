@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">SIGN UP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div class="logo ion-text-center">
+    <img src="assets/imgs/logo.png">
+    <!--<h1 class="ion-text-center" style="font-size:18px;">Ade<span>Ajala Ministries</span></h1>-->
+</div>
+<h2 class="ion-text-center ion-text-uppercase"><strong>SIGN UP AS</strong></h2>
+
+ <div class="form">
+    <ion-button size="" expand="block" class="regist end" id="register" (click)="signUpPatient()">PATIENT</ion-button>
+    <ion-button size="" expand="block" class="register2 end" (click)="signUpPhysician()">PHYSICIAN</ion-button>
+    <ion-button size="" expand="block" class="regist end" id="register" (click)="signUpNurse()">NURSE</ion-button>
+    <ion-button size="" expand="block" class="register3" (click)="signUpHospital()" style="display:none;">HOSPITAL</ion-button>
+
+    <ion-button size="" expand="block" class="register2 end" (click)="signUpOrganization()">ORGANIZATION</ion-button>
+  </div>
+</ion-content>

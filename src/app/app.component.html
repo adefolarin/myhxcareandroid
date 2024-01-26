@@ -1,0 +1,186 @@
+<ion-app [dir]="rtlSide">
+  <ion-split-pane contentId="main-content">
+      <ion-menu contentId="main-content" type="overlay">
+          <ion-header> 
+              <ion-menu-toggle auto-hide="false">
+                  <div class="profile_box d-flex">
+                      <div class="img_box center_img">
+                          <img src="assets/imgs/logo.png" class="crop_img">
+                      </div>
+                  </div>
+              </ion-menu-toggle>
+          </ion-header>
+          <ion-content *ngIf="patient">
+              <ion-list lines="none">
+
+                  <ion-menu-toggle auto-hide="false">
+                      <ion-item mode="ios" detail="false" (click)="health()" style="display: block;">
+                          <div class="item_inner d-flex">
+                              <div class="img_box ion-text-start">
+                                <ion-icon name="medkit"></ion-icon>
+                              </div>
+                              <h2 style="font-size:12px;">Health Info</h2>
+                          </div>
+                      </ion-item>
+                  </ion-menu-toggle>
+
+                  <ion-menu-toggle auto-hide="false">
+                      <ion-item mode="ios" detail="false" (click)="myaccount()" style="display: block;">
+                          <div class="item_inner d-flex">
+                              <div class="img_box ion-text-start">
+                                <ion-icon name="person"></ion-icon>
+                              </div>
+                              <h2 style="font-size:12px;">Profile</h2>
+                          </div>
+                      </ion-item>
+                  </ion-menu-toggle>
+                  
+                  <ion-menu-toggle auto-hide="false">
+                  <ion-item mode="ios" detail="false" (click)="pay()" style="display: block;">
+                      <div class="item_inner d-flex">
+                          <div class="img_box ion-text-start">
+                            <ion-icon name="cash"></ion-icon>
+                          </div>
+                          <h2 style="font-size:12px;">Pay Bills</h2>
+                      </div>
+                  </ion-item>
+                  </ion-menu-toggle>
+
+                  <ion-menu-toggle auto-hide="false">
+                      <ion-item mode="ios" detail="false" (click)="card()" style="display: block;">
+                          <div class="item_inner d-flex">
+                              <div class="img_box ion-text-start">
+                                <ion-icon name="card"></ion-icon>
+                              </div>
+                              <h2 style="font-size:12px;">E-Card</h2>
+                          </div>
+                      </ion-item>
+                 </ion-menu-toggle>
+
+                 <ion-menu-toggle auto-hide="false">
+                    <ion-item mode="ios" detail="false" (click)="qrcode()" style="display: block;">
+                        <div class="item_inner d-flex">
+                            <div class="img_box ion-text-start">
+                              <ion-icon name="barcode"></ion-icon>
+                            </div>
+                            <h2 style="font-size:12px;">QR-Code</h2>
+                        </div>
+                    </ion-item>
+                 </ion-menu-toggle>
+
+                 <ion-menu-toggle auto-hide="false">
+                    <ion-item mode="ios" detail="false" (click)="search()" style="display: block;">
+                        <div class="item_inner d-flex">
+                            <div class="img_box ion-text-start">
+                              <ion-icon name="search"></ion-icon>
+                            </div>
+                            <h2 style="font-size:12px;">Search</h2>
+                        </div>
+                    </ion-item>
+                 </ion-menu-toggle>
+
+                  <ion-menu-toggle auto-hide="false">
+                      <ion-item mode="ios" detail="false" (click)="logout()" style="display: block;">
+                          <div class="item_inner d-flex">
+                              <div class="img_box ion-text-start">
+                                <ion-icon name="log-out"></ion-icon>
+                                  <!--<ion-icon name="mail" slot="start" id="menu-icon"></ion-icon>-->
+                              </div>
+                              <h2 style="font-size:12px;">Logout</h2>
+                          </div>
+                      </ion-item>
+                      </ion-menu-toggle>
+              </ion-list>
+          </ion-content>
+
+          <ion-content *ngIf="physician">
+            <ion-list lines="none">
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item mode="ios" detail="false" (click)="health()" style="display: block;">
+                        <div class="item_inner d-flex">
+                            <div class="img_box ion-text-start">
+                              <ion-icon name="medkit"></ion-icon>
+                            </div>
+                            <h2 style="font-size:12px;">Health Info</h2>
+                        </div>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item mode="ios" detail="false" (click)="profile()" style="display: block;">
+                        <div class="item_inner d-flex">
+                            <div class="img_box ion-text-start">
+                              <ion-icon name="person"></ion-icon>
+                            </div>
+                            <h2 style="font-size:12px;">Profile</h2>
+                        </div>
+                    </ion-item>
+                </ion-menu-toggle>
+                
+                <ion-menu-toggle auto-hide="false">
+                <ion-item mode="ios" detail="false" (click)="pay()" style="display: block;">
+                    <div class="item_inner d-flex">
+                        <div class="img_box ion-text-start">
+                          <ion-icon name="cash"></ion-icon>
+                        </div>
+                        <h2 style="font-size:12px;">Pay Bills</h2>
+                    </div>
+                </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item mode="ios" detail="false" (click)="card()" style="display: block;">
+                        <div class="item_inner d-flex">
+                            <div class="img_box ion-text-start">
+                              <ion-icon name="card"></ion-icon>
+                            </div>
+                            <h2 style="font-size:12px;">E-Card</h2>
+                        </div>
+                    </ion-item>
+               </ion-menu-toggle>
+
+               <ion-menu-toggle auto-hide="false">
+                  <ion-item mode="ios" detail="false" (click)="qrcode()" style="display: block;">
+                      <div class="item_inner d-flex">
+                          <div class="img_box ion-text-start">
+                            <ion-icon name="barcode"></ion-icon>
+                          </div>
+                          <h2 style="font-size:12px;">QR-Code</h2>
+                      </div>
+                  </ion-item>
+               </ion-menu-toggle>
+
+               <ion-menu-toggle auto-hide="false">
+                  <ion-item mode="ios" detail="false" (click)="search()" style="display: block;">
+                      <div class="item_inner d-flex">
+                          <div class="img_box ion-text-start">
+                            <ion-icon name="search"></ion-icon>
+                          </div>
+                          <h2 style="font-size:12px;">Search</h2>
+                      </div>
+                  </ion-item>
+               </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item mode="ios" detail="false" (click)="logout()" style="display: block;">
+                        <div class="item_inner d-flex">
+                            <div class="img_box ion-text-start">
+                              <ion-icon name="log-out"></ion-icon>
+                                <!--<ion-icon name="mail" slot="start" id="menu-icon"></ion-icon>-->
+                            </div>
+                            <h2 style="font-size:12px;">Logout</h2>
+                        </div>
+                    </ion-item>
+                    </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+
+
+          <ion-footer class="ion-no-border">
+             
+          </ion-footer>
+      </ion-menu>
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

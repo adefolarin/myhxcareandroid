@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_img">
+  <div class="logo ion-text-center">
+      <img src="assets/imgs/logo.png">
+      <!--<h1 class="ion-text-center">The<span>Church</span></h1>-->
+  </div>
+  <h2 class="ion-text-center ion-text-uppercase">Reset Your Password</h2>
+  <p class="ion-text-center" style="font-size:12px;">
+      Please check your email <br> for password reset code
+  </p>
+  <br><br>
+  <div class="form">
+      <ion-list lines="none">
+
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <ion-input mode="md" type="email" value="{{email}}" [(ngModel)]="email"></ion-input>
+              </div>
+          </ion-item>
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <ion-input mode="md" type="text" placeholder="Enter the Password Reset Code" 
+                [(ngModel)]="code"></ion-input>
+            </div>
+         </ion-item>
+         <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <ion-input mode="md" type="password" placeholder="Enter Your New Password" 
+              [(ngModel)]="pass"></ion-input>
+          </div>
+      </ion-item>
+      </ion-list>
+      <ion-button size="small" expand="full" class="btn" (click)="resetpass()" color="secondary">Reset</ion-button>
+  </div>
+</ion-content>

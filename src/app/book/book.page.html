@@ -1,0 +1,299 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Request An Appointment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img"> 
+  <div class="form2"  *ngIf="partnerformstatus">
+    <div id="info" *ngIf="usertypestatus == true">
+      <p style="text-align: center;color: floralwhite;font-size:13px;">You are requesting an appointment with {{compname}}</p>
+    </div>
+
+    <div id="info" *ngIf="usertypestatus == false">
+      <p style="text-align: center;color: floralwhite;font-size:13px;">You are requesting an appointment with {{partnername}} who is from {{compname}}</p>
+    </div>
+      
+      <ion-list lines="none">
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">User ID</ion-label>
+                  <ion-input type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+              </div>
+          </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Partner's User ID</ion-label>
+                      <ion-input type="text" value="{{partnerid}}" [(ngModel)]="partnerid"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">QRCode</ion-label>
+                    <ion-input type="text" value="{{appid}}" [(ngModel)]="appid" readonly></ion-input>
+                </div>
+            </div>
+        </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">Name</ion-label>
+                      <ion-input type="name" value="{{name}}" [(ngModel)]="name" readonly></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">Partner's Name</ion-label>
+                    <ion-input type="name" value="{{partnername}}" [(ngModel)]="partnername" readonly></ion-input>
+                </div>
+            </div>
+        </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Phone Number</ion-label>
+                    <ion-input type="text" value="{{pnum}}" [(ngModel)]="pnum"></ion-input>
+                </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Partner's Phone Number</ion-label>
+                    <ion-input type="text" value="{{partnerpnum}}" [(ngModel)]="partnerpnum"></ion-input>
+                </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input type="text" value="{{email}}" [(ngModel)]="email"></ion-input>
+                </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Partner's Email</ion-label>
+                    <ion-input type="text" value="{{partneremail}}" [(ngModel)]="partneremail"></ion-input>
+                </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                  <div class="input_field">
+                        <ion-label position="stacked">Country</ion-label>
+                      <ion-input type="text"  value="{{country}}" [(ngModel)]="country"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <div class="input_field">
+                      <ion-label position="stacked">Address</ion-label>
+                      <ion-input type="text" value="{{address}}" [(ngModel)]="address"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                    <div class="input_field">
+                      <ion-label position="stacked">City</ion-label>
+                      <ion-input type="text" value="{{city}}" [(ngModel)]="city"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Amount</ion-label>
+                    <ion-input type="text" value="{{amount}}" [(ngModel)]="amount"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">Currency</ion-label>
+                  <ion-input type="text" value="{{currency}}" [(ngModel)]="currency"></ion-input>
+              </div>
+          </div>
+      </ion-item>
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Reason For The Appointment</ion-label>
+                    <ion-textarea [(ngModel)]="reason"></ion-textarea>
+                </div>
+            </div>
+        </ion-item>
+        <div *ngIf="usertypestatus == true">
+          <ion-button size="small" expand="full" class="btn" (click)="sendRequestPartner()">
+            SEND
+          </ion-button>
+        </div>
+        <div *ngIf="usertypestatus == false">
+          <ion-button size="small" expand="full" class="btn" (click)="loadInvoice()">
+            SEND
+          </ion-button>
+        </div>
+      </ion-list>
+  </div>
+
+
+
+
+  <div class="form2"  *ngIf="nonpartnerformstatus">
+    <div id="info">
+      <p style="text-align: center;color: floralwhite;font-size:13px;">You are requesting an appointment from a non-partner</p>
+    </div>
+    
+    <ion-list lines="none">
+        <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">User ID</ion-label>
+                    <ion-input type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display:block;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">QRCode</ion-label>
+                  <ion-input type="text" value="{{appid}}" [(ngModel)]="appid" readonly></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">App Downlod Link</ion-label>
+                  <ion-input type="text" value="{{applink}}" [(ngModel)]="applink" readonly></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                    <ion-label position="stacked">Name</ion-label>
+                    <ion-input type="name" value="{{name}}" [(ngModel)]="name" readonly></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">Phone Number</ion-label>
+                  <ion-input type="text" value="{{pnum}}" [(ngModel)]="pnum"></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">Email</ion-label>
+                  <ion-input type="text" value="{{email}}" [(ngModel)]="email"></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon> 
+                <div class="input_field">
+                      <ion-label position="stacked">Country</ion-label>
+                    <ion-input type="text"  value="{{country}}" [(ngModel)]="country"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Address</ion-label>
+                    <ion-input type="text" value="{{address}}" [(ngModel)]="address"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none" style="display:none;">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">City</ion-label>
+                    <ion-input type="text" value="{{city}}" [(ngModel)]="city"></ion-input>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">Non Partner's Name</ion-label>
+                  <ion-input type="name" [(ngModel)]="nonpname"></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">Non Partner's Email</ion-label>
+                  <ion-input type="email" [(ngModel)]="nonpemail"></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+              <div class="input_field">
+                  <ion-label position="stacked">Non Partner's Phone Number</ion-label>
+                  <ion-input type="text" [(ngModel)]="nonppnum" placeholder="Format: +2348012345678"></ion-input>
+              </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="item_inner d-flex">
+              <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">Reason For The Appointment</ion-label>
+                  <ion-textarea [(ngModel)]="nonpreason"></ion-textarea>
+              </div>
+          </div>
+      </ion-item>
+        <ion-button size="small" expand="full" class="btn" (click)="sendRequestNonPartner()">
+          SEND</ion-button>
+    </ion-list>
+  </div>
+</ion-content>

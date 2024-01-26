@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">BioData</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div id="container">
+
+    <ion-grid>
+
+      <ion-row class="ion-align-items-center" id="medkit">
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="4">
+           <p><ion-icon name="person"></ion-icon></p>
+           <p id="name">{{name}}</p>
+        </ion-col>
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="12" *ngIf="patient">
+          <ion-button size="small" expand="" class="mybutton">
+            Personal Data
+           </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+
+
+       <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="6" *ngIf = "physician">
+          <h4>Company Name</h4>
+        </ion-col>
+        <ion-col size="6" *ngIf = "physician">
+          <p>{{compname}}</p>
+        </ion-col>
+
+        <ion-col size="6" *ngIf = "physician">
+          <h4>License No</h4>
+        </ion-col>
+        <ion-col size="6" *ngIf = "physician">
+          <p>{{licenseno}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <h4>Phone Number</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{pnum}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <h4>Address</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{address}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <h4>State</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{state}}</p>
+        </ion-col>
+
+
+        <ion-col size="6">
+          <h4>Country</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{country}}</p>
+        </ion-col>
+
+
+        <ion-col size="6">
+          <h4>City</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{city}}</p>
+        </ion-col>
+
+
+        <ion-col size="6">
+          <h4>Email</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{email}}</p>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+
+</ion-content>

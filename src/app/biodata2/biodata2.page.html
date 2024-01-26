@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">BioData</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div id="container">
+
+    <ion-grid>
+
+      <ion-row class="ion-align-items-center" id="medkit">
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="4">
+           <!--<p><ion-icon name="person"></ion-icon></p>-->
+
+           <div id="div_img">
+             <br>
+            <ion-avatar><img src="{{photo}}"></ion-avatar>
+            <br>
+           </div>
+           <p id="name">{{name}}</p>
+        </ion-col>
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="12" *ngIf="patient" (click)="review()">
+          <ion-button size="small" expand="" class="mybutton2">
+            View / Write Reviews
+           </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+
+
+       <ion-row class="ion-align-items-center" id="info">
+
+          <ion-col size="6" *ngIf="usertype2">
+            <h4>Availability</h4>
+          </ion-col>
+          <ion-col size="6" *ngIf="usertype2">
+            <h4>{{online}}</h4>
+          </ion-col>
+
+          <ion-col size="6">
+             <h4>Consultation Fee</h4>
+          </ion-col>
+          <ion-col size="6">
+            <div *ngIf="currency == 'NGN'">
+              <p>&#x20A6;{{amount}}</p>
+            </div>
+            <div *ngIf="currency == 'GBP'">
+              <p>&#163;{{amount}}</p>
+            </div>
+            <div *ngIf="currency == 'USD'">
+              <p>${{amount}}</p>
+            </div>
+            <div *ngIf="currency == null">
+              <p>Not Yet Set</p>
+            </div>
+          </ion-col>
+        
+
+        <ion-col size="6">
+          <h4>Area of Specialty</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{occupation}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <h4>Company Name</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{compname}}</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <h4>Country</h4>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{country}}</p>
+        </ion-col>
+
+      </ion-row>
+
+      <br>
+
+      <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="12">
+          <h4>Time of Availability</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Weekday</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Opening Time</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Closing Time</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Duration</h4>
+        </ion-col>
+      </ion-row>
+       
+      <div *ngIf="timescheduledata != null">
+        <ion-row class="ion-align-items-center" id="info" *ngFor="let data of timescheduledata">
+            <ion-col size="3">
+              <h4>{{data.weekday}}</h4>
+            </ion-col>
+            <ion-col size="3" *ngIf="timescheduledata != null">
+              <h4>{{data.starttime}}</h4>
+            </ion-col>
+            <ion-col size="3" *ngIf="timescheduledata != null">
+              <h4>{{data.endtime}}</h4>
+            </ion-col>
+            <ion-col size="3" *ngIf="timescheduledata != null">
+              <h4>{{data.timeslot}}</h4>
+            </ion-col>
+
+        </ion-row>
+      </div>
+
+      <div *ngIf="timescheduledata == null">
+        <ion-row class="ion-align-items-center" id="info">
+            <ion-col size="12">
+              <h4>Not Yet Set</h4>
+            </ion-col>
+        </ion-row>
+      </div>
+
+      <br>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" *ngIf="currency != null">
+          <div class="">
+            <ion-button size="" expand="block" class="end mybutton" id="register" 
+            (click)="bookpartner(partnerid)">
+              <ion-icon name="book" class="book" slot="start"></ion-icon>&nbsp;&nbsp;&nbsp;Request Appointment
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+
+</ion-content>

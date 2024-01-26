@@ -1,0 +1,84 @@
+#container {
+    margin-top: 30px;
+  }
+  
+  #div_img {
+     p,ion-label,ion-icon {
+        color:#fff;
+        text-align: center;
+     }
+  
+     ion-avatar {
+        width: 80px;
+        height: 80px;
+        margin: auto; 
+        img {
+            width: 100%;
+          
+        }
+     }
+  
+  
+  
+  }
+  
+  
+  ion-icon {
+      color:#fff;
+      text-align: right;
+      font-size: 20px;
+  }
+  
+  #cardinfo {
+      margin-top: 20px;
+      background-color: rgba(44,193,239,0.6);
+      padding: 20px;
+     p {
+       color:#fff;
+       text-align: center;
+       margin-top: 5px;
+       margin-bottom: 5px;
+       padding: 15px;
+       font-size:13px;
+     }
+  }
+
+  hr {
+     border-bottom: 1px solid rgba(44,193,239,0.8);
+     width:100%;
+  }
+  
+  .mybutton {
+      --background: #2cc1ef;
+      color:#fff;
+      height: 40px;
+      font-size: 12px;
+  }
+
+
+  .logo {
+  height: 80px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  top: 5px;
+
+  img {
+      width: 165px;
+      display: block;
+      margin: auto;
+  }
+
+  h1 {
+      margin: auto;
+      width: 100%;
+      color: var(--white);
+      font-weight: 400;
+      font-size: 13px;
+
+      span {
+          font-weight: 600;
+      }
+  }
+}

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Appointment Records
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div id="container">
+   <ion-grid id="backinfo">
+      <ion-row class="ion-align-items-center" id="info">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>Booking Date</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>Date of visit</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>Time of visit</h4>
+        </ion-col>  
+        <ion-col size="3">
+          <h4>Means of Visit</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>Status</h4>
+        </ion-col>
+      </ion-row>
+       <ion-row class="ion-align-items-center info" id="info" *ngFor="let data of appointdata">
+        <ion-col size="2">
+          <p>{{data.bookdate}}</p>
+        </ion-col>
+        <ion-col size="2">
+          <p>{{data.visitdate}}</p>
+        </ion-col>
+        <ion-col size="2">
+          <p>{{data.visittime}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <p>{{data.visitmeans}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <div id="info" *ngIf="data.bookstatus == 'false' || data.bookstatus == ''">
+            <!--<ion-button size="" expand="block" class="end bookrequest2" id="register">
+               Pending
+            </ion-button>-->
+            <p class="status">Pending</p>
+            </div>
+            <div id="info" *ngIf="data.bookstatus == 'true'">
+              <!--<ion-button size="" expand="block" class="end bookrequest" id="register">
+                 Completed
+              </ion-button>-->
+              <p class="status">Completed</p>
+            </div>
+        </ion-col>
+       </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+
+</ion-content>
+

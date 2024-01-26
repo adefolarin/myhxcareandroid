@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Bank Account Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_img">
+
+
+  <div class="form2">
+      <div id="info">
+        <h1 class="ion-text-center" style="font-size:13px;color:floralwhite;">Bank<span> Account</span></h1>
+      </div>
+      <ion-list lines="none">
+         <ion-item lines="none">
+          <div class="item_inner d-flex">
+            <ion-icon class="zmdi zmdi-email ion-text-start"></ion-icon>
+            <div class="input_field">
+              <ion-label position="stacked">Bank Name</ion-label>
+              <ion-input mode="md" type="text" [(ngModel)]="bankname"></ion-input>
+            </div>
+          </div>
+          </ion-item>
+
+          <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                <div class="input_field">
+                  <ion-label position="stacked">Account Name</ion-label>
+                  <ion-input mode="md" type="text" [(ngModel)]="accname"></ion-input>
+                    
+                </div>
+            </div>
+           </ion-item>
+           <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                    <ion-label position="stacked">Account No</ion-label>
+                    <ion-input mode="md" type="text" [(ngModel)]="accno"></ion-input>
+                </div>
+            </div>
+           </ion-item>
+
+      </ion-list>
+      <ion-button size="large" expand="full" class="btn" (click)="setBankAccount()" [disabled]="disabledButton">SET / UPDATE ACCOUNT</ion-button>
+
+
+
+      <div id="backinfo">
+        <ion-grid>
+           <ion-row class="ion-align-items-center">
+             <ion-col size="12">
+               <h4>Your Account Details</h4>
+             </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center info">
+            <ion-col size="6">
+              <h4>BANK NAME</h4>
+              <p>{{bankname}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <h4>ACCOUNT NAME</h4>
+              <p>{{accname}}</p>
+            </ion-col>
+            <ion-col size="12">
+              <h4>ACCOUNT NO </h4>
+              <p>{{accno}}</p>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </div>
+
+    </div>
+</ion-content>

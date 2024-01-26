@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button style="visibility:hidden;"></ion-menu-button>
+          <ion-back-button text="" icon="chevron-back-outline" style="visibility:hidden;"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title" style="text-align: center;">Hepls & Tips</ion-title>
+      <ion-buttons slot="end"> 
+        <ion-button (click)="dismiss()">
+          <ion-icon slot="icon-only" name="close-circle-outline" class="logouticon"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+
+  <div class="ion-page" style="background-color: #fff;width:100%;margin-top:60px;padding:10px;" *ngIf="patient">
+     
+  </div>
+
+
+
+  <div class="ion-page" style="background-color: #fff;width:100%;margin-top:60px;padding:20px;" *ngIf="physician">
+    <p style="color:#000"></p>
+  </div>
+
+</ion-content>

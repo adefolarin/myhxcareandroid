@@ -1,0 +1,7 @@
+{
+  "name": "MyHxCare",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

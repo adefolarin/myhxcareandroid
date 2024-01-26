@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar> 
+      <ion-buttons slot="start">
+          <!--<ion-menu-button></ion-menu-button>-->
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+          <div class="title_inner d-flex"> Health Record Upload </div>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div>
+    <div class="form2">
+     <div id="info" style="display: none;">
+      <p style="text-align: center;color: floralwhite;font-size:13px;"></p>
+     </div>
+      <ion-list lines="none">
+          <ion-item lines="none" style="display:none;">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field">
+                      <ion-label position="stacked">User ID</ion-label>
+                      <ion-input mode="md" type="text" value="{{userid}}" [(ngModel)]="userid"></ion-input>
+                  </div>
+              </div>
+          </ion-item>
+          <ion-item lines="none" id="ionitem">
+              <div class="item_inner d-flex">
+                  <ion-icon class="zmdi ion-text-start"></ion-icon>
+                  <div class="input_field2">
+                      <ion-label for="file" class="label" style="text-align:center;">{{photoname}}</ion-label>
+                      <ion-input
+                      id="file" type="file" class="inputfile"
+                      (change)="onFileChange($event)"></ion-input>
+                      
+                  </div>
+              </div>
+          </ion-item>
+
+      </ion-list>
+      <ion-button size="small" expand="full" class="btn" (click)="upload()">UPLOAD</ion-button>
+    </div>
+
+
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  
+</ion-footer>

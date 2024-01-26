@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title id="title">Appointment Request Records</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="bg_img">
+  <div id="container">
+   <ion-grid id="backinfo">
+
+    <div *ngIf="usertype == 'patient'">
+      <ion-row class="ion-align-items-center" id="info" style="display:none;">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col>
+        <ion-col size="3">
+          <h4>To</h4>
+        </ion-col> 
+        <ion-col size="2">
+          <h4>Amount</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>Date</h4>
+        </ion-col> 
+        <ion-col size="3">
+          <h4>Request</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>Status</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center info" id="info" *ngFor="let data of requestdata">
+        <ion-col size="12">
+          <h4>PHYSICIAN</h4>
+          <p>{{data.partname}}</p>
+        </ion-col>
+        <ion-col size="12">
+          <h4>AMOUNT PAID</h4>
+          <div *ngIf="data.currency == 'NGN'">
+            <p>&#x20A6;{{data.amount}}</p>
+          </div>
+          <div *ngIf="data.currency == 'GBP'">
+            <p>&#163;{{data.amount}}</p>
+          </div>
+          <div *ngIf="data.currency == 'USD'">
+            <p>${{data.amount}}</p>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <h4>DATE OF PAYMENT</h4>
+          <p>{{data.reqdate}}</p>
+        </ion-col>
+        <ion-col size="12">
+          <h4>REQUEST</h4>
+          <p>{{data.request}}</p>
+        </ion-col>
+        <ion-col size="12">
+          <h4>STATUS</h4>
+          <div id="info" *ngIf="data.reqstatus == 'false' || data.reqstatus == ''">
+          <ion-button size="" expand="block" class="end bookrequest" id="register">
+             PENDING
+          </ion-button>
+          </div>
+          <div id="info" *ngIf="data.reqstatus == 'true'">
+            <ion-button size="" expand="block" class="end bookrequest" id="register">
+               GRANTED
+            </ion-button>
+            </div>
+        </ion-col>
+       </ion-row>
+       </div>
+
+
+      <div *ngIf="usertype == 'physician' || usertype == 'nurse'">
+       <ion-row class="ion-align-items-center" id="info" style="display:none;">
+        <ion-col size="12">
+          <h4>{{caption}}</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>From</h4>
+        </ion-col> 
+        <ion-col size="3">
+          <h4>Paid</h4>
+        </ion-col> 
+        <ion-col size="2">
+          <h4>Received</h4>
+        </ion-col> 
+        <ion-col size="3">
+          <h4>Request</h4>
+        </ion-col>
+        <ion-col size="2">
+          <h4>Action / Status</h4>
+        </ion-col>
+      </ion-row>
+
+       <ion-row class="ion-align-items-center info" id="info" *ngFor="let data2 of requestdata2">
+        <ion-col size="12">
+          <h4>DATE</h4>
+          <p>{{data2.reqdate}}</p>
+        </ion-col>
+        <ion-col size="12">
+            <h4>PATIENT NAME</h4>
+            <p>{{data2.patname}}</p>
+        </ion-col>
+        <ion-col size="12">
+             <h4>PAYMENT MADE</h4>
+          <div *ngIf="data2.currency == 'NGN'">
+            <p>&#x20A6;{{data2.amount}}</p>
+          </div>
+          <div *ngIf="data2.currency == 'GBP'">
+            <p>&#163;{{data2.amount}}</p>
+          </div>
+          <div *ngIf="data2.currency == 'USD'">
+            <p>${{data2.amount}}</p>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+            <h4>PAYMENT RECEIVED</h4>
+          <div *ngIf="data2.currency == 'NGN'">
+             <p>&#x20A6;{{data2.amountreceived}}</p>
+          </div>
+          <div *ngIf="data2.currency == 'GBP'">
+             <p>&#163;{{data2.amountreceived}}</p>
+          </div>
+          <div *ngIf="data2.currency == 'USD'">
+             <p>${{data2.amountreceived}}</p>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+           <h4>REQUEST</h4>
+           <p>{{data2.request}}</p>
+        </ion-col>
+        <ion-col size="12">
+          <div id="info" *ngIf="data2.reqstatus == 'false' || data2.reqstatus == ''">
+          <ion-button size="" expand="block" class="end bookrequest" id="register" 
+          (click)="bookPatient(data2.patid)">
+             Accept
+          </ion-button>
+          </div>
+          <div id="info" *ngIf="data2.reqstatus == 'true'">
+            <ion-button size="" expand="block" class="end bookrequest" id="register">
+               Granted
+            </ion-button>
+            </div>
+        </ion-col>
+       </ion-row>
+
+       <hr>
+       </div>
+
+
+    </ion-grid>
+
+  </div>
+
+
+
+</ion-content>

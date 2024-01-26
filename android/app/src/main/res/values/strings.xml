@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MyHxCare</string>
+    <string name="title_activity_main">MyHxCare</string>
+    <string name="package_name">com.myhxcare.myapp</string>
+    <string name="custom_url_scheme">com.myhxcare.myapp</string>
+</resources>
